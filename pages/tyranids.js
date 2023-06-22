@@ -132,7 +132,7 @@ export default function tyranids() {
                     animate={{ opacity: 1, height: 0 }}
                     transition={{ duration: 0.5, delay: 2.15 }}>
                     <Aperture
-                        link="/Icons/tyranid.svg"
+                        link="/Icons/Tyranid_Icon.svg"
                         alt="Tyranid logo" />
                     <FactionLine
                         title="The Great Devourer" />
@@ -140,7 +140,7 @@ export default function tyranids() {
             </AnimatePresence>
             <HeaderNav
                 link="/tyranids/"
-                CardTitle="/Icons/tyranid.svg"
+                CardTitle="/Icons/Tyranid_Icon.svg"
                 CardReverseTitle="/Icons/guardians-of-the-covenant.svg"
             />
             <PageBackground>
