@@ -79,14 +79,14 @@ bottom:0;
 overflow:hidden;
 .halfcircle {
   position: absolute;
-  height: 500px;
-  width: 500px;
+  height: 350px;
+  width: 350px;
   display: block;
   margin: auto;
   right: 0;
   left: 0;
-  top:-250px;
-  border-radius: 500px;
+  top:-175px;
+  border-radius: 350px;
   background-color: #FFF;
 }
 `;
@@ -103,14 +103,14 @@ overflow:hidden;
 top:0;
 .halfcircle {
   position: absolute;
-  height: 500px;
-  width: 500px;
+  height: 350px;
+  width: 350px;
   display: block;
   margin: auto;
   right: 0;
   left: 0;
-  bottom:-250px;
-  border-radius: 500px;
+  bottom:-175px;
+  border-radius: 350px;
   background-color: #FFF;
 }
 `;
