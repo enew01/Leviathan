@@ -40,8 +40,6 @@ const ArmyList = ({
                     <h2 id="HQ-Units">HQ Units</h2>
                 </CardHeader>
                 <ListStyles>
-                    <WarhammerCard cardTitle="Hive Tyrant" />
-                    <WarhammerCard cardTitle="Winged Tyrant" />
                     <WarhammerCard cardTitle="Neurotyrant" />
                 </ListStyles>
             </CardWrap>
@@ -54,6 +52,7 @@ const ArmyList = ({
                     <h2 id="Troops">Troops</h2>
                 </CardHeader>
                 <ListStyles>
+                    <WarhammerCard cardTitle="Neurogaunt" />
                     <WarhammerCard cardTitle="Termagant" />
                     <WarhammerCard cardTitle="Barbgaunt" />
                 </ListStyles>
@@ -67,7 +66,6 @@ const ArmyList = ({
                     <h2 id="Elites">Elites</h2>
                 </CardHeader>
                 <ListStyles>
-                    <WarhammerCard cardTitle="Winged Prime" />
                     <WarhammerCard cardTitle="Zoanthrope" />
                 </ListStyles>
             </CardWrap>
@@ -81,7 +79,7 @@ const ArmyList = ({
                 </CardHeader>
                 <ListStyles>
                     <WarhammerCard cardTitle="Screamer Killer" />
-                    <WarhammerCard cardTitle="Carnifex" />
+                    <WarhammerCard cardTitle="Von Ryan's Leaper" />
                 </ListStyles>
             </CardWrap>
         );
@@ -93,6 +91,7 @@ const ArmyList = ({
                     <h2 id="Heavy-Support">Heavy Support</h2>
                 </CardHeader>
                 <ListStyles>
+                    <WarhammerCard cardTitle="Psychophage" />
                     <WarhammerCard cardTitle="Tyrannofex" />
                 </ListStyles>
             </CardWrap>
@@ -105,7 +104,6 @@ const ArmyList = ({
                     <h2 id="Flyer">Flyer</h2>
                 </CardHeader>
                 <ListStyles>
-                    <WarhammerCard cardTitle="Hive Crone" />
                 </ListStyles>
             </CardWrap>
         );

@@ -273,6 +273,34 @@ const WarhammerCard = (props) => {
         imageSrc = "/cards/tyranids/Hive_Crone(Front).jpg";
         reverseimageSrc = "/cards/tyranids/Hive_Crone(Back).jpg";
         altText = "Hive Crone";
+    } else if (cardTitle === "Hive Crone") {
+        imageSrc = "/cards/tyranids/Hive_Crone(Front).jpg";
+        reverseimageSrc = "/cards/tyranids/Hive_Crone(Back).jpg";
+        altText = "Hive Crone";
+    } else if (cardTitle === "Neurogaunt") {
+        imageSrc = "/cards/tyranids/Neurogaunts(Front).jpg";
+        reverseimageSrc = "/cards/tyranids/Neurogaunts(Back).jpg";
+        altText = "Neurogaunts";
+    } else if (cardTitle === "Tyranid Warrior (Melee)") {
+        imageSrc = "/cards/tyranids/Warriors_Melee(Front).jpg";
+        reverseimageSrc = "/cards/tyranids/Warriors_Melee(Back).jpg";
+        altText = "Tyranid Warriors (Melee)";
+    } else if (cardTitle === "Tyranid Warrior (Ranged)") {
+        imageSrc = "/cards/tyranids/Warriors(Front).jpg";
+        reverseimageSrc = "/cards/tyranids/Warriors(Back).jpg";
+        altText = "Tyranid Warriors (Ranged)";
+    } else if (cardTitle === "Psychophage") {
+        imageSrc = "/cards/tyranids/Psychophage(Front).jpg";
+        reverseimageSrc = "/cards/tyranids/Psychophage(Back).jpg";
+        altText = "Psychophage";
+    } else if (cardTitle === "Tyrant Guard") {
+        imageSrc = "/cards/tyranids/Tyrant_Guard(Front).jpg";
+        reverseimageSrc = "/cards/tyranids/Tyrant_Guard(Back).jpg";
+        altText = "Tyrant Guard";
+    } else if (cardTitle === "Von Ryan's Leaper") {
+        imageSrc = "/cards/tyranids/Von_Ryan_Leapers(Front).jpg";
+        reverseimageSrc = "/cards/tyranids/Von_Ryan_Leapers(Back).jpg";
+        altText = "Von Ryan's Leapers";
     }
 
 
