@@ -12,8 +12,8 @@ const ApertureStyles = styled.section`
 .aperture {
     position:absolute;
       background-color: #FFF;
-      width: 400px;
-      height: 400px;
+      width: 350px;
+      height: 350px;
       border: 5px solid #FFF;
       border-radius: 50%;
       overflow: hidden;

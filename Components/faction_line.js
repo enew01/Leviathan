@@ -11,7 +11,7 @@ display: block;
 right: 0;
 left: 0;
 margin: auto;
-bottom: 80px;
+bottom: 125px;
 text-align: center;
 .faction-title {
     font-family: ${fonts.orbitron};
