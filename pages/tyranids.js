@@ -49,7 +49,7 @@ const Transition = styled(motion.section)`
     position: absolute;
     display: block;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(4deg) brightness(106%) contrast(101%);
-    top: calc(50% - 200px);
+    top: calc(50% - 150px);
     right: 0;
     left: 0;
     margin: auto;

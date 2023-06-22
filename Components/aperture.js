@@ -12,8 +12,8 @@ const ApertureStyles = styled.section`
 .aperture {
     position:absolute;
       background-color: #FFF;
-      width: 500px;
-      height: 500px;
+      width: 400px;
+      height: 400px;
       border: 5px solid #FFF;
       border-radius: 50%;
       overflow: hidden;
@@ -113,7 +113,7 @@ const Aperture = ({
 
     return (
         <ApertureStyles>
-            <Image className="logo" src={link} alt={alt} width="400" height="400" />
+            <Image className="logo" src={link} alt={alt} width="300" height="300" />
             <div class="aperture">
                 <div class="diaphragm">
                     <div></div>
