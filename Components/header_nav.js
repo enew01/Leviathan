@@ -9,7 +9,7 @@ const Header = styled.section`
 position: absolute;
 display: block;
 height: 70px;
-width: 1430px;
+width: 1129px;
 z-index: 4;
 top: 0px;
 .wide-button {
@@ -26,7 +26,7 @@ top: 0px;
     left: 0;
     .outer-link-wrap {
         position: absolute;
-        width: 1430px;
+        width: 1129px;
         height: 100%;
         padding: 0 140px;
         display: flex;
@@ -84,7 +84,7 @@ top: 0px;
     }
 }
 .expanded {
-    width: 1430px;
+    width: 1129px;
   }
   
 

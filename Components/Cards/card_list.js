@@ -5,17 +5,17 @@ import Image from "next/image";
 import styled from "styled-components";
 
 const CardWrap = styled.section`
-width: 1300px;
-height: 731px;
+width: 1000px;
+height: 532px;
 display: block;
 position: relative;
 margin-bottom: 48px;
-perspective: 1300px; 
+perspective: 1000px; 
 `;
 
 const InnerCover = styled.section`
     width: 100%;
-    height: 731px;
+    height: 532px;
     position: absolute;
     top: 0;
     z-index: 3;
@@ -33,9 +33,9 @@ const InnerCover = styled.section`
     }
 `;
 const CardReverseStyle = styled.section`
-width: 1300px;
+width: 1000px;
 overflow:hidden;
-height: 731px;
+height: 532px;
 display: block;
 position:absolute;
 margin: 0 auto;
@@ -47,7 +47,7 @@ backface-visibility: hidden;
 transform: rotateY(180deg);
 .inner-cover {
     width: 100%;
-    height: 731px;
+    height: 532px;
     position: absolute;
     top: 0;
     z-index: 3;
@@ -71,6 +71,8 @@ img {
     margin-bottom: 48px;
     display:block;
     z-index: 2;
+    width: 100%;
+    height: 100%;
 }
 
 &.front {
@@ -85,8 +87,8 @@ img {
 
 `;
 const CardStyle = styled.section`
-width: 1300px;
-height: 731px;
+width: 1000px;
+height: 532px;
 display: block;
 position:absolute;
 margin: 0 auto;
@@ -99,7 +101,7 @@ backface-visibility: hidden;
 transform: rotateY(0deg);
 .inner-cover {
     width: 100%;
-    height: 731px;
+    height: 532px;
     position: absolute;
     top: 0;
     z-index: 3;
@@ -123,6 +125,8 @@ img {
     margin-bottom: 48px;
     display:block;
     z-index: 2;
+    width: 100%;
+    height: 100%;
 }
 
 &.front {
