@@ -12,12 +12,12 @@ height: 70px;
 width: 1129px;
 z-index: 4;
 top: 0px;
+scroll-behavior: smooth;
 .wide-button {
     position: absolute;
     height: 140px;
     width: 140px;
     display: block;
-    background-color: ${colors.darkBlue};
     top: -70px;
     z-index: 9;
     overflow:hidden;
@@ -49,9 +49,15 @@ top: 0px;
                 margin: auto;
             }
             &:hover {
-                background-color: ${colors.ForegroundBlue};
+                background-color: ${colors.darkGray};
             }
         }
+    }
+    &.tyranid-purple {
+        background-color: ${colors.tyranidPurple};
+    }
+    &.astartes-blue {
+        background-color: ${colors.astartesBlue};
     }
 }
 .open-button {
@@ -60,7 +66,7 @@ top: 0px;
     width: 140px;
     top: -70px;
     border-radius: 100px;
-    background-color: ${colors.ForegroundBlue};
+    background-color: ${colors.darkGray};
     z-index: 9;
     left: 0;
     cursor: pointer;
@@ -100,11 +106,11 @@ const HeaderNav = (props) => {
         setFlipped(!flipped);
     };
 
-    const { CardTitle, CardReverseTitle } = props;
+    const { Color, CardTitle, CardReverseTitle } = props;
 
     return (
         <Header >
-            <div className={`wide-button ${expanded ? 'expanded' : ''}`} >
+            <div className={`wide-button ${expanded ? 'expanded' : ''} ${Color}`} >
                 <div className="outer-link-wrap">
                     <a href="#HQ-Units" className="link-wrap">
                         <div className="local-link">HQ</div>

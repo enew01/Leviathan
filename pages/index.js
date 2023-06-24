@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Aperture from "@/Components/aperture";
 import FactionLine from "@/Components/faction_line";
+import { colors } from '@/styles/variables'
 
 
 const Main = styled.section`
@@ -19,6 +20,16 @@ align-items: center;
 padding: 6rem;
 min-height: 100vh;
 overflow: hidden;
+`;
+
+const Overlay = styled.section`
+position: absolute;
+height: 100%;
+width: 100%;
+top: 0;
+display: block;
+background-color: ${colors.darkGray};
+opacity: 0.8;
 `;
 
 const PageBackground = styled.section`
@@ -50,7 +61,7 @@ const LogoTransition = styled(motion.section)`
   height: 100%;
   margin: 0 auto;
   background-color: #000;
-  z-index: 8;
+  z-index: 10;
   overflow: hidden;
   top: 0;
   img {
@@ -71,7 +82,7 @@ const Transition = styled(motion.section)`
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
-  z-index: 8;
+  z-index: 10;
   top:0;
 `;
 
@@ -136,6 +147,7 @@ export default function Home() {
 
   return (
     <Main>
+    <Overlay />
       <AnimatePresence>
         <LogoTransition
           initial={{ opacity: 1, height: "100%" }}

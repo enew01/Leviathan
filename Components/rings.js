@@ -20,7 +20,7 @@ const RingStyle = styled.section`
   height: 1300px;
   top:-140px;
   border-radius: 2005px;
-  border: ${colors.darkGray} solid 2px;
+  border: ${colors.white} solid 2px;
   -webkit-animation: spin-right 45s linear infinite;
   animation: spin-right 45s linear infinite;
 }
@@ -33,7 +33,7 @@ const RingStyle = styled.section`
   height: 1000px;
   top:00px;
   border-radius: 2005px;
-  border: ${colors.darkGray} solid 1px;
+  border: ${colors.white} solid 1px;
   -webkit-animation: spin-right 30s linear infinite;
   animation: spin-right 30s linear infinite;
 }
@@ -46,7 +46,7 @@ const RingStyle = styled.section`
   height: 1000px;
   top:00px;
   border-radius: 2005px;
-  border: ${colors.darkGray} solid 1px;
+  border: ${colors.white} solid 1px;
   -webkit-animation: spin-right 30s linear infinite;
   animation: spin-right 30s linear infinite;
 }
@@ -56,7 +56,7 @@ const RingStyle = styled.section`
   width: 50px;
   display: block;
   border-radius: 25px;
-  background-color:${colors.darkGray};
+  background-color:${colors.white};
   top: -25px;
 }
 .innerringcircle {
@@ -65,7 +65,7 @@ const RingStyle = styled.section`
   width: 28px;
   display: block;
   border-radius: 25px;
-  background-color:${colors.darkGray};
+  background-color:${colors.white};
   top: -14px;
 }
 .innerringorbitcircle {
@@ -79,7 +79,7 @@ const RingStyle = styled.section`
   border-style: solid;
   border-radius: 225px;
   border-width: 1px;
-  border-color:${colors.darkGray};
+  border-color:${colors.white};
   bottom: -110px;
   -webkit-animation: nested-spin-right 10s linear infinite;
   animation: nested-spin-right 10s linear infinite;
@@ -89,7 +89,7 @@ const RingStyle = styled.section`
   height: 18px;
   width: 18px;
   display: block;
-  background-color:${colors.darkGray};
+  background-color:${colors.white};
   top: 0;
   left:0;
   bottom: 0;
@@ -102,7 +102,7 @@ const RingStyle = styled.section`
   height: 18px;
   width: 18px;
   display: block;
-  background-color:${colors.darkGray};
+  background-color:${colors.white};
   top: 54px;
   border-radius: 10px;
 }

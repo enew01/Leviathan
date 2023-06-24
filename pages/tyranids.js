@@ -9,6 +9,8 @@ import CustomButton from "../Components/button"
 import { useState } from "react";
 import { useRouter } from "next/router";
 import HeaderNav from "@/Components/header_nav";
+import img from '../public/tyranid_background.jpg';
+import { colors } from "@/styles/variables"
 
 
 const Main = styled.section`
@@ -19,6 +21,42 @@ justify-content: center;
 align-items: center;
 height: 100vh;
 overflow: hidden;
+background-image: url(${img.src});
+background-size: cover;
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 60px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: ${colors.darkGray}; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: ${colors.tyranidPurple}; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #FFF; 
+  cursor:pointer;
+}
+`;
+
+
+const Overlay = styled.section`
+position: absolute;
+height: 100%;
+width: 100%;
+top: 0;
+display: block;
+background: ${colors.tyranidPurple};
+background: ${colors.tyranidGradient};
+opacity: 0.8;
 `;
 
 const PageBackground = styled.section`
@@ -30,6 +68,7 @@ padding: 6rem;
 min-height: 100vh;
 overflow-Y: scroll;
 z-index: 3;
+scroll-behavior: smooth!important;
 .home-button {
     margin-bottom: 75px;
 }
@@ -126,6 +165,7 @@ export default function tyranids() {
     };
     return (
         <Main>
+            <Overlay />
             <AnimatePresence>
                 <Transition
                     initial={{ opacity: 1, height: "100%" }}
@@ -139,12 +179,14 @@ export default function tyranids() {
                 </Transition>
             </AnimatePresence>
             <HeaderNav
+                Color="tyranid-purple"
                 link="/tyranids/"
                 CardTitle="/Icons/Tyranid_Icon.svg"
                 CardReverseTitle="/Icons/guardians-of-the-covenant.svg"
             />
             <PageBackground>
                 <Title
+                    Color="faction"
                     title="Tyranids">
                 </Title>
                 <ArmyList type="HQ" />
@@ -186,3 +228,4 @@ export default function tyranids() {
         </Main>
     );
 };
+tyranids.displayName = 'Tyranids';

@@ -14,7 +14,11 @@ export const colors = {
     darkGray: "#0D0D0F",
     white: "#FFFFFF",
     darkBlue: "#424257",
-    ForegroundBlue: "#2E363A"
+    ForegroundBlue: "#2E363A",
+    tyranidPurple: "#401b46",
+    tyranidGradient: "linear-gradient(0deg, rgba(64,27,70,1) 11%, rgba(0,212,255,0) 100%)",
+    astartesBlue: "#062c43",
+    astartesGradient: "linear-gradient(0deg, rgba(6,44,67,1) 11%, rgba(0,212,255,0) 100%)"
 }
 
 const variables = {

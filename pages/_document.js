@@ -4,7 +4,16 @@ import { ServerStyleSheet } from 'styled-components'
 
 
 class EditedDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+    // Retrieve the current page component from the Next.js context
+    const pageComponent = ctx.renderPage().props.pageProps.component;
+
+    // Pass the pageComponent prop to the initial props
+    return { ...initialProps, pageComponent };
+  }
   render() {
+    const { pageComponent } = this.props;
     return (
       <Html lang="en">
         <Head>
@@ -17,9 +26,7 @@ class EditedDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>
-          <main>
             <NextScript />
-          </main>
         </body>
       </Html>
     );
