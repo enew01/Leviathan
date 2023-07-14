@@ -152,79 +152,98 @@ top:0;
   background-color: #FFF;
 }
 `;
-export default function spacemarines() {
-    const [showTransition, setShowTransition] = useState(false);
-    const router = useRouter();
+export default function spacemarines({ armyData }) {
+  const { data } = armyData;
+  const [showTransition, setShowTransition] = useState(false);
+  const router = useRouter();
 
-    const handleButtonClick = (link) => {
-        setShowTransition(true);
-        setTimeout(() => {
-            router.push(link);
-        }, 500);
-    };
-    return (
-        <Main>
-        <Overlay />
-            <AnimatePresence>
-                <Transition
-                    initial={{ opacity: 1, height: "100%" }}
-                    animate={{ opacity: 1, height: 0 }}
-                    transition={{ duration: 0.5, delay: 2.15 }}>
-                    <Aperture
-                        link="/Icons/adeptus-astartes.svg"
-                        alt="Astartes logo" />
-                    <FactionLine
-                        title="The Angels of Death" />
-                </Transition>
-            </AnimatePresence>
-            <HeaderNav
-                Color="astartes-blue"
-                link="/adeptus-astartes/"
-                CardTitle="/Icons/adeptus-astartes.svg"
-                CardReverseTitle="/Icons/guardians-of-the-covenant.svg"
-            />
-            <PageBackground>
-                <Title
-                    Color="faction"
-                    title="Adeptus Astartes">
-                </Title>
-                <ArmyList type="HQ" />
-                <ArmyList type="Troops" />
-                <ArmyList type="Elites" />
-                <ArmyList type="FastAttack" />
-                <ArmyList type="HeavySupport" />
-                <ArmyList type="Flyer" />
-                <ArmyList type="Transport" />
-                <CustomButton
-                    link="/"
-                    type="primary"
-                    fill="filled"
-                    className="home-button"
-                    text="Return"
-                    onClick={handleButtonClick}
-                />
-            </PageBackground>
-            <AnimatePresence>
-                {showTransition && (
-                    <DoorTransition>
-                        <TDoorUp
-                            initial={{ height: 0 }}
-                            animate={{ height: "50%" }}
-                            exit={{ height: 0 }}
-                            transition={{ duration: 0.3 }}>
-                            <div className="halfcircle"></div>
-                        </TDoorUp>
-                        <TDoorDown
-                            initial={{ height: 0 }}
-                            animate={{ height: "50%" }}
-                            exit={{ height: 0 }}
-                            transition={{ duration: 0.3 }} >
-                            <div className="halfcircle"></div>
-                        </TDoorDown>
-                    </DoorTransition>
-                )}
-            </AnimatePresence>
-        </Main>
-    );
+  const handleButtonClick = (link) => {
+    setShowTransition(true);
+    setTimeout(() => {
+      router.push(link);
+    }, 500);
+  };
+  return (
+    <Main>
+      <Overlay />
+      <AnimatePresence>
+        <Transition
+          initial={{ opacity: 1, height: "100%" }}
+          animate={{ opacity: 1, height: 0 }}
+          transition={{ duration: 0.5, delay: 2.15 }}>
+          <Aperture
+            link="/Icons/adeptus-astartes.svg"
+            alt="Astartes logo" />
+          <FactionLine
+            title="The Angels of Death" />
+        </Transition>
+      </AnimatePresence>
+      <HeaderNav
+        Color="astartes-blue"
+        link="/adeptus-astartes/"
+        CardTitle="/Icons/adeptus-astartes.svg"
+        CardReverseTitle="/Icons/guardians-of-the-covenant.svg"
+      />
+      <PageBackground>
+        <Title
+          Color="faction"
+          title="Adeptus Astartes">
+        </Title>
+        {/* {armyData.map(data => {
+          return <ArmyList data={data}/>
+        })} */}
+        {/* {armyData.filter(d => d.type === "HQ").map(data => {
+          return <ArmyList data={data}/>
+        })} */}
+        <ArmyList type="HQ" />
+        <ArmyList type="Troops" />
+        <ArmyList type="Elites" />
+        <ArmyList type="FastAttack" />
+        <ArmyList type="HeavySupport" />
+        <ArmyList type="Flyer" />
+        <ArmyList type="Transport" />
+        <CustomButton
+          link="/"
+          type="primary"
+          fill="filled"
+          className="home-button"
+          text="Return"
+          onClick={handleButtonClick}
+        />
+      </PageBackground>
+      <AnimatePresence>
+        {showTransition && (
+          <DoorTransition>
+            <TDoorUp
+              initial={{ height: 0 }}
+              animate={{ height: "50%" }}
+              exit={{ height: 0 }}
+              transition={{ duration: 0.3 }}>
+              <div className="halfcircle"></div>
+            </TDoorUp>
+            <TDoorDown
+              initial={{ height: 0 }}
+              animate={{ height: "50%" }}
+              exit={{ height: 0 }}
+              transition={{ duration: 0.3 }} >
+              <div className="halfcircle"></div>
+            </TDoorDown>
+          </DoorTransition>
+        )}
+      </AnimatePresence>
+    </Main>
+  );
 };
 spacemarines.displayName = 'Astartes';
+
+export async function getStaticProps() {
+  const res = await fetch(process.env.APP_URL + "api/army-data?name=space_marines");
+  const data = await res.json();
+
+  return {
+    props: {
+      armyData: data,
+    },
+    revalidate: 60
+  }
+}
