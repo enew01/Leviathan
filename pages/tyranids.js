@@ -10,7 +10,8 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import HeaderNav from "@/Components/header_nav";
 import img from '../public/tyranid_background.jpg';
-import { colors } from "@/styles/variables"
+import { fonts, colors } from "@/styles/variables";
+import WarhammerCard from "@/Components/Cards/card_list";
 
 
 const Main = styled.section`
@@ -153,79 +154,152 @@ top:0;
 }
 `;
 
-export default function tyranids() {
-    const [showTransition, setShowTransition] = useState(false);
-    const router = useRouter();
+const CardWrap = styled.section`
+display: block;
+position:relative;
+margin-bottom: 48px;
+`;
 
-    const handleButtonClick = (link) => {
-        setShowTransition(true);
-        setTimeout(() => {
-            router.push(link);
-        }, 500);
-    };
-    return (
-        <Main>
-            <Overlay />
-            <AnimatePresence>
-                <Transition
-                    initial={{ opacity: 1, height: "100%" }}
-                    animate={{ opacity: 1, height: 0 }}
-                    transition={{ duration: 0.5, delay: 2.15 }}>
-                    <Aperture
-                        link="/Icons/Tyranid_Icon.svg"
-                        alt="Tyranid logo" />
-                    <FactionLine
-                        title="The Great Devourer" />
-                </Transition>
-            </AnimatePresence>
-            <HeaderNav
-                Color="tyranid-purple"
-                link="/tyranids/"
-                CardTitle="/Icons/Tyranid_Icon.svg"
-                CardReverseTitle="/Icons/guardians-of-the-covenant.svg"
-            />
-            <PageBackground>
-                <Title
-                    Color="faction"
-                    title="Tyranids">
-                </Title>
-                <ArmyList type="HQ" />
-                <ArmyList type="Troops" />
-                <ArmyList type="Elites" />
-                <ArmyList type="FastAttack" />
-                <ArmyList type="HeavySupport" />
-                <ArmyList type="Flyer" />
-                <ArmyList type="Transport" />
-                <CustomButton
-                    link="/"
-                    type="primary"
-                    fill="filled"
-                    className="home-button"
-                    text="Return"
-                    onClick={handleButtonClick}
-                />
-            </PageBackground>
-            <AnimatePresence>
-                {showTransition && (
-                    <DoorTransition>
-                        <TDoorUp
-                            initial={{ height: 0 }}
-                            animate={{ height: "50%" }}
-                            exit={{ height: 0 }}
-                            transition={{ duration: 0.3 }}>
-                            <div className="halfcircle"></div>
-                        </TDoorUp>
-                        <TDoorDown
-                            initial={{ height: 0 }}
-                            animate={{ height: "50%" }}
-                            exit={{ height: 0 }}
-                            transition={{ duration: 0.3 }} >
-                            <div className="halfcircle"></div>
-                        </TDoorDown>
-                    </DoorTransition>
-                )}
-            </AnimatePresence>
-        </Main>
-    );
+const CardHeader = styled.section`
+display: block;
+margin-bottom: 32px;
+border-style: none none solid none;
+border-color: ${colors.darkGray};
+border-width: 2px;
+
+
+H2 {
+    font-family: ${fonts.tech};
+    text-transform: uppercase;
+    font-size: 32px;
+    text-align: left;
+    color: ${colors.darkGray};
+}
+`;
+
+const ListStyles = styled.section`
+}
+`;
+
+
+
+export default function tyranids({ armyData }) {
+  const { data } = armyData;
+  const [showTransition, setShowTransition] = useState(false);
+  const router = useRouter();
+
+  const handleButtonClick = (link) => {
+    setShowTransition(true);
+    setTimeout(() => {
+      router.push(link);
+    }, 500);
+  };
+  const characterUnits = ["Neurotyrant"];
+  const battlelineUnits = ["Termagant"];
+  const otherUnits = ["Neurogaunt", "Barbgaunt", "Zoanthrope", "Von Ryan Leapers", "Screamer Killer", "Psychophage", "Tyrannofex"];
+
+
+  return (
+    <Main>
+      <Overlay />
+      <AnimatePresence>
+        <Transition
+          initial={{ opacity: 1, height: "100%" }}
+          animate={{ opacity: 1, height: 0 }}
+          transition={{ duration: 0.5, delay: 2.15 }}>
+          <Aperture
+            link="/Icons/Tyranid_Icon.svg"
+            alt="Tyranid logo" />
+          <FactionLine
+            title="The Great Devourer" />
+        </Transition>
+      </AnimatePresence>
+      <HeaderNav
+        Color="tyranid-purple"
+        link="/tyranids/"
+        CardTitle="/Icons/Tyranid_Icon.svg"
+        CardReverseTitle="/Icons/guardians-of-the-covenant.svg"
+      />
+      <PageBackground>
+        <Title
+          Color="faction"
+          title="Tyranids">
+        </Title>
+        <CardWrap>
+          <CardHeader>
+            <h2 id="character">character</h2>
+          </CardHeader>
+          <ListStyles>
+            {data.filter(d => d.type === "character").filter(d => characterUnits.includes(d.name)).map(data => {
+              return <WarhammerCard data={data} />
+
+            })}
+          </ListStyles>
+        </CardWrap>
+        <CardWrap>
+          <CardHeader>
+            <h2 id="battleline">battleline</h2>
+          </CardHeader>
+          <ListStyles>
+            {data.filter(d => d.type === "battleline").filter(d => battlelineUnits.includes(d.name)).map(data => {
+              return <WarhammerCard data={data} />
+
+            })}
+          </ListStyles>
+        </CardWrap>
+        <CardWrap>
+          <CardHeader>
+            <h2 id="other">other</h2>
+          </CardHeader>
+          <ListStyles>
+            {data.filter(d => d.type === "other").filter(d => otherUnits.includes(d.name)).map(data => {
+              return <WarhammerCard data={data} />
+
+            })}
+          </ListStyles>
+        </CardWrap>
+        <CustomButton
+          link="/"
+          type="primary"
+          fill="filled"
+          className="home-button"
+          text="Return"
+          onClick={handleButtonClick}
+        />
+      </PageBackground>
+      <AnimatePresence>
+        {showTransition && (
+          <DoorTransition>
+            <TDoorUp
+              initial={{ height: 0 }}
+              animate={{ height: "50%" }}
+              exit={{ height: 0 }}
+              transition={{ duration: 0.3 }}>
+              <div className="halfcircle"></div>
+            </TDoorUp>
+            <TDoorDown
+              initial={{ height: 0 }}
+              animate={{ height: "50%" }}
+              exit={{ height: 0 }}
+              transition={{ duration: 0.3 }} >
+              <div className="halfcircle"></div>
+            </TDoorDown>
+          </DoorTransition>
+        )}
+      </AnimatePresence>
+    </Main>
+  );
 };
 tyranids.displayName = 'Tyranids';
+
+export async function getStaticProps() {
+  const res = await fetch(process.env.APP_URL + "api/army-data?name=tyranids");
+  const data = await res.json();
+
+  return {
+    props: {
+      armyData: data,
+    },
+    revalidate: 60
+  }
+}

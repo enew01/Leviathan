@@ -21,15 +21,15 @@ export default function handler(req, res) {
         const fileType = path.extname(army);
         const [armyName, armyType, imgDirection] = army.split("__");
         const fixedImgDir = imgDirection?.replace(fileType, "");
-        if (!armyName || !armyType || (fixedImgDir !== "Front" && fixedImgDir !== "Back")) continue;
+        if (!armyName || !armyType || (fixedImgDir !== "(Front)" && fixedImgDir !== "(Back)")) continue;
         let dataToEnter =
-            fixedImgDir === "Front"
+            fixedImgDir === "(Front)"
                 ? {
-                      frontImg: `/cards/${query.name}/${army}`,
-                  }
+                    frontImg: `/cards/${query.name}/${army}`,
+                }
                 : {
-                      backImg: `/cards/${query.name}/${army}`,
-                  };
+                    backImg: `/cards/${query.name}/${army}`,
+                };
         if (armyObj[armyName]) {
             armyObj[armyName] = {
                 ...armyObj[armyName],

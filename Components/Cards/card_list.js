@@ -141,7 +141,8 @@ img {
 
 `;
 
-const WarhammerCard = (props) => {
+const WarhammerCard = ({ data }) => {
+    console.log(data);
     const [rotation, setRotation] = useState(0);
     const [reverseRotation, setReverseRotation] = useState(180);
 
@@ -165,7 +166,8 @@ const WarhammerCard = (props) => {
         handleReverseRotate(-180);
     };
 
-    const { cardTitle } = props;
+    // const { cardTitle } = props;
+    const cardTitle = "Terminator Captain";
     let imageSrc = "";
     let reverseimageSrc = "";
     let altText = "";
@@ -311,10 +313,10 @@ const WarhammerCard = (props) => {
                 <div className="right-tap" onClick={handleAddRotation}></div>
             </InnerCover>
             <CardReverseStyle style={{ transform: `rotateY(${reverseRotation}deg)` }}>
-                <Image className="" src={reverseimageSrc} alt={altText} width="1300" height="731" />
+                <Image className="" src={data.backImg} alt={data.name} width="1300" height="731" />
             </CardReverseStyle>
             <CardStyle style={{ transform: `rotateY(${rotation}deg)` }}>
-                <Image className="" src={imageSrc} alt={altText} width="1300" height="731" />
+                <Image className="" src={data.frontImg} alt={data.name} width="1300" height="731" />
             </CardStyle>
         </CardWrap>
     );

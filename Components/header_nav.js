@@ -112,26 +112,14 @@ const HeaderNav = (props) => {
         <Header >
             <div className={`wide-button ${expanded ? 'expanded' : ''} ${Color}`} >
                 <div className="outer-link-wrap">
-                    <a href="#HQ-Units" className="link-wrap">
-                        <div className="local-link">HQ</div>
+                    <a href="#character" className="link-wrap">
+                        <div className="local-link">Character</div>
                     </a>
-                    <a href="#Troops" className="link-wrap">
-                        <div className="local-link">Troops</div>
+                    <a href="#battleline" className="link-wrap">
+                        <div className="local-link">Battleline</div>
                     </a>
-                    <a href="#Elites" className="link-wrap">
-                        <div className="local-link">Elite</div>
-                    </a>
-                    <a href="#Fast-Attack" className="link-wrap">
-                        <div className="local-link">Fast Attack</div>
-                    </a>
-                    <a href="#Heavy-Support" className="link-wrap">
-                        <div className="local-link">Heavy Support</div>
-                    </a>
-                    <a href="#Flyer" className="link-wrap">
-                        <div className="local-link">Flyer</div>
-                    </a>
-                    <a href="#Transport" className="link-wrap">
-                        <div className="local-link">Transport</div>
+                    <a href="#other" className="link-wrap">
+                        <div className="local-link">Other</div>
                     </a>
                 </div>
             </div>
