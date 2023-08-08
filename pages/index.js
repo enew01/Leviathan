@@ -47,11 +47,24 @@ margin: 0 auto;
 const ButtonList = styled.section`
 gap: 35px;
 display:flex;
+flex-direction: row;
+align-items: center;
+text-align: center;
+width: var(--max-width);
+max-width: 100%;
+justify-content: center;
+flex-wrap: wrap;
+`;
+
+const LowerButtonList = styled.section`
+gap: 35px;
+display:flex;
 flex-direction: column;
 align-items: center;
 text-align: center;
 width: var(--max-width);
 max-width: 100%;
+margin-top: 30px;
 `;
 
 const LogoTransition = styled(motion.section)`
@@ -147,7 +160,7 @@ export default function Home() {
 
   return (
     <Main>
-    <Overlay />
+      <Overlay />
       <AnimatePresence>
         <LogoTransition
           initial={{ opacity: 1, height: "100%" }}
@@ -174,7 +187,30 @@ export default function Home() {
           text="Tyranids"
           onClick={handleButtonClick}
         />
+        <CustomButton
+          link="/adeptus-sororitas/"
+          type="primary"
+          fill="filled"
+          text="Adeptus Sororitas"
+          onClick={handleButtonClick}
+        />
+        <CustomButton
+          link="/heretic-astartes/"
+          type="primary"
+          fill="filled"
+          text="Heretic Astartes"
+          onClick={handleButtonClick}
+        />
       </ButtonList>
+      <LowerButtonList>
+        <CustomButton
+          link="/game-tracker/"
+          type="primary"
+          fill="filled"
+          text="game tracker"
+          onClick={handleButtonClick}
+        />
+      </LowerButtonList>
       <AnimatePresence>
         {showTransition && (
           <Transition>
