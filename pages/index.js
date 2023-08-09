@@ -188,10 +188,10 @@ export default function Home() {
           onClick={handleButtonClick}
         />
         <CustomButton
-          link="/adeptus-sororitas/"
+          link="/adepta-sororitas/"
           type="primary"
           fill="filled"
-          text="Adeptus Sororitas"
+          text="Adepta Sororitas"
           onClick={handleButtonClick}
         />
         <CustomButton
