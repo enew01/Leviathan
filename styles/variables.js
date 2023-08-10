@@ -12,13 +12,14 @@ export const colors = {
     gradBottom: "drop-shadow(-7px 15px 5px #1F2024)",
     gradTop: "drop-shadow(3px -5px 5px #1F2024)",
     darkGray: "#0D0D0F",
-    white: "#FFFFFF",
+    white: "#FAFAFA",
     darkBlue: "#424257",
     ForegroundBlue: "#2E363A",
     tyranidPurple: "#401b46",
     tyranidGradient: "linear-gradient(0deg, rgba(64,27,70,1) 11%, rgba(0,212,255,0) 100%)",
     astartesBlue: "#062c43",
-    astartesGradient: "linear-gradient(0deg, rgba(6,44,67,1) 11%, rgba(0,212,255,0) 100%)"
+    astartesGradient: "linear-gradient(0deg, rgba(6,44,67,1) 11%, rgba(0,212,255,0) 100%)",
+    red: "#4B0B0B"
 }
 
 const variables = {

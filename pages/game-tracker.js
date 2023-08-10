@@ -38,7 +38,7 @@ background-size: cover;
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: ${colors.astartesBlue}; 
+  background: ${colors.buttonBG}; 
 }
 
 /* Handle on hover */
@@ -226,21 +226,43 @@ export default function GameTracker() {
 
     const phaseData = [
         {
-            title: "Phase 1",
-            text: "Phase 1 Text",
+            title: "Command Phase",
             stepsContent: [
-                { title: "Step 1", text: "Step 1 Content" },
-                { title: "Step 2", text: "Step 2 Content" },
-                // Add more steps as needed
+                { title: "Command", text: <ul><li>-Both Players gain 1 Command Point.</li><li>-Resolve any special rules that take place in the Command Phase</li></ul> },
+                { title: "Battleshock", text: <ul><li>-Take a Battle-shock test for every unit Below Half Strength. <br />(Below half wounds for single model units)</li></ul> },
             ]
         },
         {
-            title: "Phase 2",
-            text: "Phase 2 Text",
+            title: "Movement Phase",
             stepsContent: [
-                { title: "Step A", text: "Step A Content" },
-                { title: "Step B", text: "Step B Content" },
-                // Add more steps as needed
+                { title: "Move Units", text: <ul><li>-Units may make a Normal Move, Advance, or Remain Stationary</li><li>-Units in Engagement Range of enemy models can only Fall Back or Remain Stationary</li></ul> },
+                { title: "Reinforcements", text: <ul><li>-Set up any units in Reserve on the Battlefield, one at a time. Movement phase ends when Reinforcements are deployed.</li></ul> },
+            ]
+        },
+        {
+            title: "Shooting Phase",
+            stepsContent: [
+                { title: "Select Unit", text: <ul><li>-Select a Unit that has not Advanced or Fallen Back this turn.</li></ul> },
+                { title: "Select Target", text: <ul><li>-Select targets for all a units Ranged weapons before it shoots.</li><li>-At least one model must be visible and within range.</li><li>-Models with multiple ranged weapons can shoot them at different targets.</li><li>-Models in the same unit can shoot at the same or different targets.</li></ul> },
+                { title: "Make Ranged Attack", text: <ul><li>-Resolve all attacks against one unit before resolving those against any other unit.</li><li>-Resolve all of a weapon's attacks before resolving attacks with another profile.</li></ul> },
+                { title: "Repeat for Next Unit", text: <ul></ul> },
+            ]
+        },
+        {
+            title: "Charge Phase",
+            stepsContent: [
+                { title: "Select Unit", text: <ul><li>-Select a Unit that has not Advanced, Fallen Back, or is an Aircraft.</li></ul> },
+                { title: "Select Targets", text: <ul><li>-Select one or more units to charge.</li> <li>-Target does not need to be visible</li><li>-The Charge must be able to end in engagement range and not in engagement range of any un-charged unit.</li> </ul> },
+                { title: "Charge", text: <ul><li>-Make Charge Roll (2d6)</li><li>-If the above conditions are met the charge is successful.</li><li>-If the charge fails no units move.</li></ul> },
+            ]
+        },
+        {
+            title: "Fight Phase",
+            stepsContent: [
+                { title: "Fight First", text: <ul><li>-Units with the Fight First ability fight, including those who charged.</li></ul> },
+                { title: "Pile In", text: <ul><li>-Move a Unit not in bast-to-base contact with an enemy up to 3".</li><li>-This Unit must still be in engagement range and maintain unit coherency.</li><li>-Must End the Pile-In closer to the closest enemy unit than thye started.</li></ul> },
+                { title: "Attack", text: <ul><li>-A model can fight if it is in engagement range with an enemy unit. </li><li>-A model can fight if it is in base-to-base contact with a model from its unit that is in base-to-base contact.</li><li>-Rules for attack resolution are the same as ranged weapons.</li><li>-All attacks declared are resolved even if no longer in engagement range.</li></ul> },
+                { title: "Consolidate", text: <ul><li>-A Consolidation move can be made to move a model not in base-to-base contact with an enemy up to 3"</li><li>-A unit must be able to end a Consolidation move in engagement range of an enemy unit or within range of an objective marker if no enemy is avaailable.</li><li>-If no enemy or objective marker is within range no Consolidation move can be made.</li></ul> },
             ]
         }
     ];

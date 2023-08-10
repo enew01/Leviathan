@@ -8,54 +8,39 @@ import PhaseSteps from "./phase_steps";
 const PhaseTrack = styled.section`
 position: relative;
 display: block;
-height: 370px;
-width: 200px;
+max-height: 700px;
+height: auto;
+width: 20%;
 z-index: 4;
 top: 0px;
 scroll-behavior: smooth;
 .wide-button {
-    position: absolute;
-    height: 70px;
-    width: 200px;
+    position: relative;
+    height: auto;
+    max-height: 70px;
+    width: 100%;
     display: block;
     top: -70px;
     z-index: 9;
     overflow:hidden;
     border-radius: 10px;
-    transition: height 0.5s ease;
+    transition: max-height 1s ease;
     left: 0;
     background-color: ${colors.white};
     .outer-link-wrap {
-        position: absolute;
-        width: 200px;
-        height: 100%;
+        position: relative;
+        width: 100%;
+        height: auto;
         padding: 70px 0 0 0;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        .link-wrap {
-            width: 200px;
-            height: 100%;
-            text-align: center;
-            position: relative;
-            .local-link {
-                display: block;
-                text-align: center;
-                text-transform: uppercase;
-                color: ${colors.darkGray};
-                font-family: ${fonts.tech};
-                margin: auto;
-            }
-            &:hover {
-                background-color: ${colors.darkGray};
-            }
-        }
     }
 }
 .open-button {
     position: absolute;
     height: 70px;
-    width: 200px;
+    width: 100%;
     top: -70px;
     border-radius: 10px;
     background-color: ${colors.darkGray};
@@ -64,6 +49,9 @@ scroll-behavior: smooth;
     cursor: pointer;
     color: ${colors.white};
     font-family: ${fonts.tech};
+    text-align: center;
+    line-height: 70px;
+    font-size: 24px;
     img {
         position: absolute;
         filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(4deg) brightness(106%) contrast(101%);
@@ -72,19 +60,10 @@ scroll-behavior: smooth;
         right: 0;
         left: 0;
     }
-    .fronticon-,
-    .reverseicon-flipped {
-        width: 70px;
-        transition: height 0.5s ease;
-    }
-    .reverseicon-,
-    .fronticon-flipped {
-        width: 0px;
-        transition: height 0.5s ease;
-    }
 }
 .expanded {
-    height: 370px;
+    height: auto;
+    max-height: 400px;
   }
   
 
