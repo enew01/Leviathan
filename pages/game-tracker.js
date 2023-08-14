@@ -1,16 +1,13 @@
-import React from "react";
-import styled from "styled-components"
+import React, { useState, useRef, useEffect } from "react";
+import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import Aperture from "@/Components/aperture";
-import FactionLine from "@/Components/faction_line";
-import CustomButton from "../Components/button"
-import { useState } from "react";
 import { useRouter } from "next/router";
-import HeaderNav from "@/Components/header_nav";
-import img from '../public/astartes_background.jpg';
 import { fonts, colors } from "@/styles/variables"
 import ScoreCounter from "@/Components/counter";
 import PhaseWrap from "@/Components/Phases/phase_wrap";
+import KeywordButton from "@/Components/Keywords/keyword_button";
+import KeywordDef from "@/Components/Keywords/keyword_def";
 
 
 const Main = styled.section`
@@ -206,22 +203,65 @@ width: 100%;
 height: auto;
 position:relative;
 `;
+const Keywords = styled.section`
+width: 100%;
+height: auto;
+position:relative;
+.keyword-buttons {
+    display: flex;
+}
+
+.keyword-definitions {
+    height: auto;
+    margin-bottom: 50px;
+    .keyword-definition {
+        height: auto;
+        overflow: hidden;
+        transition: height 0.3s ease-in-out;
+        background-color: ${colors.white};
+        z-index: 8;
+      }
+}
+
+  
+`;
 
 export default function GameTracker() {
     const [showTransition, setShowTransition] = useState(false);
     const router = useRouter();
 
-    const handleButtonClick = (link) => {
-        setShowTransition(true);
-        setTimeout(() => {
-            router.push(link);
-        }, 500);
-    };
 
     const [roundCount, setCount] = useState(1);
 
     const addRound = () => {
         setCount(roundCount + 1);
+    };
+
+    const keywords = [
+        {
+            title: 'Unit Coherency',
+            text: <ul>Within 2" horizontally and 5" vertically of: <li>One other model from the same unit (in units of 2-6 models).</li><li>Two other models from the same unit (in units of 7+ models).</li>At the end of every turn, if a unit is not in Unit Coherency, the controlling player must remove models until that unit is in Unit Coherency again.</ul>
+        },
+
+        {
+            title: 'Engagement Range',
+            text: <ul> Within 1" horizontally and 5" vertically.<li>Models cannot be set up or end a Normal, Advance or Fall Back move within Engagement Range of any enemy models.</li></ul>,
+        },
+    ];
+
+    // Keep track of the index of the currently expanded keyword
+    const [expandedIndex, setExpandedIndex] = useState(null);
+
+    // Reference to store content height
+    const contentRefs = keywords.map(() => React.createRef());
+
+    // Toggle the expansion state of a keyword when its button is clicked
+    const toggleExpansion = (index) => {
+        if (expandedIndex === index) {
+            setExpandedIndex(null); // Close the clicked keyword
+        } else {
+            setExpandedIndex(index); // Expand the clicked keyword
+        }
     };
 
     const phaseData = [
@@ -294,6 +334,27 @@ export default function GameTracker() {
                 <Phases>
                     <PhaseWrap phaseData={phaseData} />
                 </Phases>
+                <Keywords>
+                    <div className="keyword-buttons">
+                        {keywords.map((keyword, index) => (
+                            <KeywordButton
+                                key={index}
+                                title={keyword.title}
+                                onClick={() => toggleExpansion(index)}
+                            />
+                        ))}
+                    </div>
+                    <div className="keyword-definitions">
+                        {keywords.map((keyword, index) => (
+                            <KeywordDef
+                                key={index}
+                                text={keyword.text}
+                                expanded={expandedIndex === index}
+                                contentRef={contentRefs[index]}
+                            />
+                        ))}
+                    </div>
+                </Keywords>
             </PageBackground>
             <AnimatePresence>
                 {showTransition && (

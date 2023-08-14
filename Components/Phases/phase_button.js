@@ -1,6 +1,4 @@
-import React from "react";
-import { useState } from 'react';
-import styled from "styled-components"
+import React, { useState, useRef, useEffect } from "react"; import styled from "styled-components"
 import { colors, fonts } from "@/styles/variables";
 import PhaseSteps from "./phase_steps";
 
@@ -8,7 +6,6 @@ import PhaseSteps from "./phase_steps";
 const PhaseTrack = styled.section`
 position: relative;
 display: block;
-max-height: 700px;
 height: auto;
 width: 20%;
 z-index: 4;
@@ -16,15 +13,14 @@ top: 0px;
 scroll-behavior: smooth;
 .wide-button {
     position: relative;
-    height: auto;
-    max-height: 70px;
+    height: 70px;
     width: 100%;
     display: block;
     top: -70px;
     z-index: 9;
     overflow:hidden;
     border-radius: 10px;
-    transition: max-height 1s ease;
+    transition: height 1s ease;
     left: 0;
     background-color: ${colors.white};
     .outer-link-wrap {
@@ -62,9 +58,9 @@ scroll-behavior: smooth;
     }
 }
 .expanded {
-    height: auto;
-    max-height: 400px;
-  }
+  height: ${(props) => (props.expanded ? `${props.expandedHeight}px` : "0")};
+  overflow: hidden;
+  transition: height 1s ease;
   
 
 `;
@@ -72,6 +68,15 @@ scroll-behavior: smooth;
 const PhaseButton = ({ phase }) => {
     const [expanded, setExpanded] = useState(false);
     const [flipped, setFlipped] = useState(false);
+    const [expandedHeight, setExpandedHeight] = useState(0);
+    const outerLinkWrapRef = useRef(null);
+
+    useEffect(() => {
+        if (outerLinkWrapRef.current) {
+            const height = outerLinkWrapRef.current.clientHeight;
+            setExpandedHeight(height);
+        }
+    }, [expanded]);
 
     const handleClick = () => {
         setExpanded(!expanded);
@@ -79,9 +84,9 @@ const PhaseButton = ({ phase }) => {
     };
 
     return (
-        <PhaseTrack>
+        <PhaseTrack expanded={expanded} expandedHeight={expandedHeight}>
             <div className={`wide-button ${expanded ? 'expanded' : ''}`}>
-                <div className="outer-link-wrap">
+                <div className="outer-link-wrap" ref={outerLinkWrapRef}>
                     {phase.stepsContent.map((stepContent, stepIndex) => (
                         <PhaseSteps
                             key={stepIndex}

@@ -13,7 +13,10 @@ const PhaseWrap = ({ phaseData }) => {
     return (
         <PhaseWrapper>
             {phaseData.map((phase, phaseIndex) => (
-                <PhaseButton key={phaseIndex} phase={phase} />
+                <PhaseButton
+                    key={phaseIndex}
+                    phase={phase}
+                />
             ))}
         </PhaseWrapper>
     );
