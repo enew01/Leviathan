@@ -56,6 +56,21 @@ scroll-behavior: smooth;
         right: 0;
         left: 0;
     }
+    .keyword-cover {
+        position: absolute;
+        display: block;
+        background-color: ${colors.darkGray};
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+    }
+    .button-title {
+        position: relative;
+        display: block;
+        z-index: 5;
+    }
 }
 .expanded {
   height: ${(props) => (props.expanded ? `${props.expandedHeight}px` : "0")};
@@ -96,7 +111,10 @@ const PhaseButton = ({ phase }) => {
                     ))}
                 </div>
             </div>
-            <div className="open-button" onClick={handleClick}>{phase.title}</div>
+            <div className="open-button" onClick={handleClick}>
+                <div className="button-title">{phase.title}</div>
+                <div className="keyword-cover"></div>
+            </div>
         </PhaseTrack>
     );
 };

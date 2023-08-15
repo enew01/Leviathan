@@ -6,7 +6,8 @@ import { colors, fonts } from "@/styles/variables";
 const KeyButton = styled.section`
 position: relative;
 height: 70px;
-width: 20%;
+width: auto;
+padding: 0 35px;
 border-radius: 10px;
 background-color: ${colors.darkGray};
 z-index: 9;
@@ -17,12 +18,17 @@ font-family: ${fonts.tech};
 text-align: center;
 line-height: 70px;
 font-size: 24px;
+    .button-title {
+        position: relative;
+        display: block;
+        z-index: 5;
+    }
 `;
 
 function KeywordButton({ title, onClick }) {
     return (
         <KeyButton className="keyword-button" onClick={onClick}>
-            {title}
+            <div className="button-title">{title}</div>
         </KeyButton>
     );
 }

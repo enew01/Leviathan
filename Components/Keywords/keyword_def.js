@@ -7,7 +7,6 @@ const KeywordText = styled.section`
 position: absolute;
 background-color: ${colors.white};
 width: 100%;
-top: 70px;
 font-family: ${fonts.tech};
 font-size: 20px;
 color: ${colors.darkGray};

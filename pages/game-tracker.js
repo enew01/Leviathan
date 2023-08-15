@@ -207,11 +207,15 @@ const Keywords = styled.section`
 width: 100%;
 height: auto;
 position:relative;
+margin-bottom: 150px;
 .keyword-buttons {
     display: flex;
+    flex-wrap: wrap;
+    position: relative;
 }
 
 .keyword-definitions {
+    position: relative;
     height: auto;
     margin-bottom: 50px;
     .keyword-definition {
@@ -221,9 +225,17 @@ position:relative;
         background-color: ${colors.white};
         z-index: 8;
       }
-}
+} `
 
-  
+const SectionTitle = styled.section`
+font-family: ${fonts.goldman};
+font-size: 36px;
+text-transform: uppercase;
+border-style: none none solid none;
+border-width: 3px;
+border-color: ${colors.white};
+color: ${colors.white};
+margin-bottom: 25px;
 `;
 
 export default function GameTracker() {
@@ -239,18 +251,79 @@ export default function GameTracker() {
 
     const keywords = [
         {
-            title: 'Unit Coherency',
-            text: <ul>Within 2" horizontally and 5" vertically of: <li>One other model from the same unit (in units of 2-6 models).</li><li>Two other models from the same unit (in units of 7+ models).</li>At the end of every turn, if a unit is not in Unit Coherency, the controlling player must remove models until that unit is in Unit Coherency again.</ul>
+            title: 'Big Guns Never Tire',
+            text: <ul><b>Monsters</b> and <b>Vehicles</b> can shoot, and be shot at, even while they are within Engagement Range of enemy units.
+                <li>Each time a ranged attack is made by or against such a unit, subtract 1 from that attack’s Hit roll (unless shooting with a Pistol).</li></ul>,
         },
-
+        {
+            title: 'Critical Wound',
+            text: <ul>Unmodified Wound roll of 6. Always successful<li>An unmodified Wound roll of 1 always fails.</li><li>A Wound roll can never be modified by more than -1 or +1.</li></ul>,
+        },
+        {
+            title: 'Deadly Demise (X)',
+            text: <ul>When this model is destroyed, roll one D6. On a 6, each unit within 6" suffers ‘x’ mortal wounds. </ul>,
+        },
+        {
+            title: 'Desperate Escape',
+            text: <ul>Models making a Fall Back move through an enemy unit must make a desperate escape roll.<li>Roll one D6 for each model. On a 1-2, on model from that unit is destroyed</li><li>A Battle-shocked unit that is falling back must make a Desperate Escape Test for every model.</li></ul>,
+        },
+        {
+            title: 'Disembark',
+            text: <ul><li>Units that start your Movement phase embarked within a Transport can disembark this phase, provided their Transport has not Advanced or Fallen Back.</li>
+                <li>If a unit disembarks before its Transport moves, it can act normally.</li>
+                <li>If a unit disembarks after its Transport moves, it cannot move or charge this turn, but can otherwise act normally.</li>
+                <li>Disembarking units must be set up wholly within 3" of their Transport and not within Engagement Range of any enemy models (or the unit cannot disembark).</li>
+                <li>Units that disembark this turn cannot Remain Stationary.</li>
+            </ul>,
+        },
+        {
+            title: 'Embark',
+            text: <ul><li>A unit can embark within a friendly Transport if all of its models end a Normal, Advance or Fall Back move within 3" of that Transport.</li><li>A unit cannot embark and disembark in the same phase.</li></ul>,
+        },
         {
             title: 'Engagement Range',
             text: <ul> Within 1" horizontally and 5" vertically.<li>Models cannot be set up or end a Normal, Advance or Fall Back move within Engagement Range of any enemy models.</li></ul>,
+        },
+        {
+            title: 'Feel No Pain (X)',
+            text: <ul>Each time this model would lose a wound, roll one D6: if the result equals or exceeds ‘x’, that wound is not lost.</ul>,
+        },
+        {
+            title: 'Firing Deck (X)',
+            text: <ul>Each time this Transport shoots, select one weapon from up to ‘x’ models embarked within it; this Transport counts as being equipped with those weapons as well.</ul>,
+        },
+        {
+            title: 'Lone Operative',
+            text: <ul>Unless part of an Attached unit, this unit can only be selected as the target of a ranged attack if the attacking model is within 12". </ul>,
+        },
+        {
+            title: 'Saving Throw',
+            text: <ul>Roll one D6 and modify by the attack’s AP. If the result is less than the Save of the model being rolled for, the saving throw is failed and that model suffers damage. Otherwise, that attack is saved.
+                <li>An unmodified saving throw of 1 always fails</li>
+                <li>A saving throw can never be improved by more than +1.</li>
+                <li><b>Invulnerable Save:</b> Never modified by an attack’s AP. </li>
+                <li>The controlling player can choose to use either a model’s invulnerable save or its Save characteristic.</li>
+            </ul>,
+        },
+        {
+            title: 'Stealth',
+            text: <ul>If every model in a unit has this ability, then each time a ranged attack is made against it, subtract 1 from that attack’s Hit roll.</ul>,
+        },
+        {
+            title: 'Unit Coherency',
+            text: <ul>Within 2" horizontally and 5" vertically of: <li>One other model from the same unit (in units of 2-6 models).</li><li>Two other models from the same unit (in units of 7+ models).</li>At the end of every turn, if a unit is not in Unit Coherency, the controlling player must remove models until that unit is in Unit Coherency again.</ul>
+        },
+    ];
+    const weaponKeywords = [
+        {
+            title: 'Unit Coherency',
+            text: <ul>Within 2" horizontally and 5" vertically of: <li>One other model from the same unit (in units of 2-6 models).</li><li>Two other models from the same unit (in units of 7+ models).</li>At the end of every turn, if a unit is not in Unit Coherency, the controlling player must remove models until that unit is in Unit Coherency again.</ul>
         },
     ];
 
     // Keep track of the index of the currently expanded keyword
     const [expandedIndex, setExpandedIndex] = useState(null);
+    const [expandedWeaponIndex, setExpandedWeaponIndex] = useState(null);
 
     // Reference to store content height
     const contentRefs = keywords.map(() => React.createRef());
@@ -261,6 +334,13 @@ export default function GameTracker() {
             setExpandedIndex(null); // Close the clicked keyword
         } else {
             setExpandedIndex(index); // Expand the clicked keyword
+        }
+    };
+    const toggleWeaponExpansion = (weaponIndex) => {
+        if (expandedWeaponIndex === weaponIndex) {
+            setExpandedWeaponIndex(null); // Close the clicked keyword
+        } else {
+            setExpandedWeaponIndex(weaponIndex); // Expand the clicked keyword
         }
     };
 
@@ -335,6 +415,7 @@ export default function GameTracker() {
                     <PhaseWrap phaseData={phaseData} />
                 </Phases>
                 <Keywords>
+                    <SectionTitle>Keywords</SectionTitle>
                     <div className="keyword-buttons">
                         {keywords.map((keyword, index) => (
                             <KeywordButton
@@ -351,6 +432,28 @@ export default function GameTracker() {
                                 text={keyword.text}
                                 expanded={expandedIndex === index}
                                 contentRef={contentRefs[index]}
+                            />
+                        ))}
+                    </div>
+                </Keywords>
+                <Keywords>
+                    <SectionTitle>Weapon Keywords</SectionTitle>
+                    <div className="keyword-buttons" >
+                        {weaponKeywords.map((keyword, weaponIndex) => (
+                            <KeywordButton
+                                key={weaponIndex}
+                                title={keyword.title}
+                                onClick={() => toggleWeaponExpansion(weaponIndex)}
+                            />
+                        ))}
+                    </div>
+                    <div className="keyword-definitions">
+                        {weaponKeywords.map((keyword, weaponIndex) => (
+                            <KeywordDef
+                                key={weaponIndex}
+                                text={keyword.text}
+                                expanded={expandedWeaponIndex === weaponIndex}
+                                contentRef={contentRefs[weaponIndex]}
                             />
                         ))}
                     </div>
