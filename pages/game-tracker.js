@@ -216,10 +216,8 @@ margin-bottom: 150px;
 
 .keyword-definitions {
     position: relative;
-    height: auto;
     margin-bottom: 50px;
     .keyword-definition {
-        height: auto;
         overflow: hidden;
         transition: height 0.3s ease-in-out;
         background-color: ${colors.white};
@@ -256,12 +254,20 @@ export default function GameTracker() {
                 <li>Each time a ranged attack is made by or against such a unit, subtract 1 from that attack’s Hit roll (unless shooting with a Pistol).</li></ul>,
         },
         {
+            title: 'Critical Hit',
+            text: <ul>Unmodified Hit roll of 6. Always successful</ul>,
+        },
+        {
             title: 'Critical Wound',
             text: <ul>Unmodified Wound roll of 6. Always successful<li>An unmodified Wound roll of 1 always fails.</li><li>A Wound roll can never be modified by more than -1 or +1.</li></ul>,
         },
         {
             title: 'Deadly Demise (X)',
             text: <ul>When this model is destroyed, roll one D6. On a 6, each unit within 6" suffers ‘x’ mortal wounds. </ul>,
+        },
+        {
+            title: 'Deep Strike',
+            text: <ul>Units can be set upin Reserves instead of on the Battlefield. Units can be set up in your Reinforcements Step, must be set up more than 9" horizontally from all enemy models.</ul>,
         },
         {
             title: 'Desperate Escape',
@@ -293,8 +299,20 @@ export default function GameTracker() {
             text: <ul>Each time this Transport shoots, select one weapon from up to ‘x’ models embarked within it; this Transport counts as being equipped with those weapons as well.</ul>,
         },
         {
+            title: 'Hover',
+            text: <ul>When declaring Battle Formations, Aircraft with Hover must declare if they are in Hover Mode. Units in Hover Mode have their Movement set to 20", lose the Aircraft keyword and all associated Aircraft rules and cannot start in reserve, but can be placed in Strategic Reserves as per normal rules.</ul>,
+        },
+        {
+            title: 'Leader',
+            text: <ul>Before the battle, units with the Leader ability can be attached to one of their bodyguard units to form an Attached Unit. Attached Units cannot have more than one leader. Attacks cannot be allocated to character models in Attached Units.</ul>,
+        },
+        {
             title: 'Lone Operative',
             text: <ul>Unless part of an Attached unit, this unit can only be selected as the target of a ranged attack if the attacking model is within 12". </ul>,
+        },
+        {
+            title: 'Rapid Deployment',
+            text: <ul>Units can disembark from a model that has Advanced. Units that do so cannot declare a Charge and count as having made a Normal Move that turn. </ul>,
         },
         {
             title: 'Saving Throw',
@@ -304,6 +322,10 @@ export default function GameTracker() {
                 <li><b>Invulnerable Save:</b> Never modified by an attack’s AP. </li>
                 <li>The controlling player can choose to use either a model’s invulnerable save or its Save characteristic.</li>
             </ul>,
+        },
+        {
+            title: 'Scouts (X)',
+            text: <ul>Units can make a normal move up to 'x' before the first turn begins. If embarked in a dedicated transport the transport can make this normal move instead. Must end this move more than 9" from all enemy models.</ul>,
         },
         {
             title: 'Stealth',
@@ -316,31 +338,106 @@ export default function GameTracker() {
     ];
     const weaponKeywords = [
         {
-            title: 'Unit Coherency',
-            text: <ul>Within 2" horizontally and 5" vertically of: <li>One other model from the same unit (in units of 2-6 models).</li><li>Two other models from the same unit (in units of 7+ models).</li>At the end of every turn, if a unit is not in Unit Coherency, the controlling player must remove models until that unit is in Unit Coherency again.</ul>
+            title: 'Anti-[Keyword] X',
+            text: <ul>An unmodified Wound roll of ‘x+’ against a target with the matching keyword scores a Critical Wound.</ul>
+        },
+        {
+            title: 'Assault',
+            text: <ul>Can be shot even if the bearer’s unit Advanced.</ul>
+        },
+        {
+            title: 'Assault Ramp',
+            text: <ul>Units can declare Charge the same turn they Disembark</ul>
+        },
+        {
+            title: 'Blast',
+            text: <ul>
+                <li>Add 1 to the Attacks characteristic for every five models in the target unit (rounding down).</li>
+                <li>Can never be used against a target that is within Engagement Range of any units from the attacking model’s army (including its own).</li>
+            </ul>
+        },
+        {
+            title: 'Devastating Wounds',
+            text: <ul>A Critical Wound inflicts mortal wounds equal to the weapon’s Damage characteristic, instead of any normal damage.</ul>
+        },
+        {
+            title: 'Extra Attacks',
+            text: <ul>The bearer can attack with this weapon in addition to any other weapons it can make attacks with.</ul>
+        },
+        {
+            title: 'Hazardous',
+            text: <ul>After a unit shoots or fights, roll one Hazardous test (one D6) for each Hazardous weapon used. For each 1, one model equipped with a Hazardous weapon is destroyed (Characters, Monsters and Vehicles suffer 3 mortal wounds instead). </ul>
+        },
+        {
+            title: 'Heavy',
+            text: <ul>Add 1 to Hit rolls if the bearer’s unit Remained Stationary this turn.</ul>
+        },
+        {
+            title: 'Ignores Cover',
+            text: <ul>Each time an attack is made with such a weapon, the target cannot have the Benefit of Cover against that attack.</ul>
+        },
+        {
+            title: 'Indirect Fire',
+            text: <ul><li>Can target and make attacks against units that are not visible to the attacking unit.</li>
+                <li>If no models are visible in a target unit when it is selected, then when making an attack against that target with an Indirect Fire weapon, subtract 1 from that attack’s Hit roll and the target has the Benefit of Cover against that attack.</li>
+            </ul>
+        },
+        {
+            title: 'Lance',
+            text: <ul>Each time an attack is made with such a weapon, if the bearer made a Charge move this turn, add 1 to that attack’s Wound roll.</ul>
+        },
+        {
+            title: 'Lethal Hits',
+            text: <ul>Each time an attack is made with such a weapon, a Critical Hit automatically wounds the target.</ul>
+        },
+        {
+            title: 'Melta (X)',
+            text: <ul>Increase the Damage by ‘x’ when targeting units within half range. </ul>
+        },
+        {
+            title: 'Precision',
+            text: <ul>When targeting an Attached unit, the attacking model’s player can have the attack allocated to a Character model in that unit visible to the bearer. </ul>
+        },
+        {
+            title: 'Pistol',
+            text: <ul><li>Can be shot even if the bearer’s unit is within Engagement Range of enemy units, but must target one of those enemy units.</li><li>Cannot be shot alongside any other non-Pistol weapon (except by a Monster or Vehicle).</li></ul>
+        },
+        {
+            title: 'Rapid Fire (X)',
+            text: <ul>Increase the Attack characteristic by ‘x’ when targeting units within half range.</ul>
+        },
+        {
+            title: 'Sustained Hits (X)',
+            text: <ul>Each Critical Hit scores ‘x’ additional hits on the target.</ul>
+        },
+        {
+            title: 'Torrent',
+            text: <ul>Each time an attack is made with such a weapon, that attack automatically hits the target.</ul>
+        },
+        {
+            title: 'Twin-Linked',
+            text: <ul> Each time an attack is made with such a weapon, you can re-roll that attack’s Wound roll.</ul>
         },
     ];
 
-    // Keep track of the index of the currently expanded keyword
     const [expandedIndex, setExpandedIndex] = useState(null);
     const [expandedWeaponIndex, setExpandedWeaponIndex] = useState(null);
 
-    // Reference to store content height
     const contentRefs = keywords.map(() => React.createRef());
+    const contentWeaponRefs = weaponKeywords.map(() => React.createRef());
 
-    // Toggle the expansion state of a keyword when its button is clicked
     const toggleExpansion = (index) => {
         if (expandedIndex === index) {
-            setExpandedIndex(null); // Close the clicked keyword
+            setExpandedIndex(null);
         } else {
-            setExpandedIndex(index); // Expand the clicked keyword
+            setExpandedIndex(index);
         }
     };
     const toggleWeaponExpansion = (weaponIndex) => {
         if (expandedWeaponIndex === weaponIndex) {
-            setExpandedWeaponIndex(null); // Close the clicked keyword
+            setExpandedWeaponIndex(null);
         } else {
-            setExpandedWeaponIndex(weaponIndex); // Expand the clicked keyword
+            setExpandedWeaponIndex(weaponIndex);
         }
     };
 
@@ -453,7 +550,7 @@ export default function GameTracker() {
                                 key={weaponIndex}
                                 text={keyword.text}
                                 expanded={expandedWeaponIndex === weaponIndex}
-                                contentRef={contentRefs[weaponIndex]}
+                                contentRef={contentWeaponRefs[weaponIndex]}
                             />
                         ))}
                     </div>
