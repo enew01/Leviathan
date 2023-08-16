@@ -7,7 +7,7 @@ const PhaseTrack = styled.section`
 position: relative;
 display: block;
 height: auto;
-width: 20%;
+width: 100%;
 z-index: 4;
 top: 0px;
 scroll-behavior: smooth;

@@ -23,7 +23,7 @@ scroll-behavior: smooth;
     overflow:hidden;
     border-radius: 100px;
     transition: width 0.5s ease;
-    left: 0;
+    right: 0;
     .outer-link-wrap {
         position: absolute;
         width: 1129px;
@@ -68,7 +68,7 @@ scroll-behavior: smooth;
     border-radius: 100px;
     background-color: ${colors.darkGray};
     z-index: 9;
-    left: 0;
+    right: 0;
     cursor: pointer;
     img {
         position: absolute;

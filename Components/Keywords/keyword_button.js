@@ -23,14 +23,36 @@ font-size: 24px;
         display: block;
         z-index: 5;
     }
+    &.clicked {
+        background-color: ${colors.white};
+        color: ${colors.darkGray};
+    }
 `;
 
-function KeywordButton({ title, onClick }) {
+function KeywordButton({ title, onClick, activeButton, setActiveButton }) {
+    const isClicked = activeButton === title;
+
+    const handleClick = () => {
+        if (isClicked) {
+            setActiveButton(null);
+        } else {
+            setActiveButton(title);
+        }
+
+        if (onClick) {
+            onClick();
+        }
+    };
+
     return (
-        <KeyButton className="keyword-button" onClick={onClick}>
+        <KeyButton
+            className={`keyword-button ${isClicked ? 'clicked' : ''}`}
+            onClick={handleClick}
+        >
             <div className="button-title">{title}</div>
         </KeyButton>
     );
 }
 
 export default KeywordButton;
+

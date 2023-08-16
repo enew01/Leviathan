@@ -8,6 +8,7 @@ import ScoreCounter from "@/Components/counter";
 import PhaseWrap from "@/Components/Phases/phase_wrap";
 import KeywordButton from "@/Components/Keywords/keyword_button";
 import KeywordDef from "@/Components/Keywords/keyword_def";
+import CustomButton from "../Components/button";
 
 
 const Main = styled.section`
@@ -240,6 +241,13 @@ export default function GameTracker() {
     const [showTransition, setShowTransition] = useState(false);
     const router = useRouter();
 
+    const handleButtonClick = (link) => {
+        setShowTransition(true);
+        setTimeout(() => {
+            router.push(link);
+        }, 500);
+    };
+
 
     const [roundCount, setCount] = useState(1);
 
@@ -422,6 +430,8 @@ export default function GameTracker() {
 
     const [expandedIndex, setExpandedIndex] = useState(null);
     const [expandedWeaponIndex, setExpandedWeaponIndex] = useState(null);
+    const [activeButton, setActiveButton] = useState(null);
+    const [activeWeaponButton, setActiveWeaponButton] = useState(null);
 
     const contentRefs = keywords.map(() => React.createRef());
     const contentWeaponRefs = weaponKeywords.map(() => React.createRef());
@@ -485,6 +495,7 @@ export default function GameTracker() {
     ];
     return (
         <Main>
+            <Overlay />
             <AnimatePresence>
                 <LogoTransition
                     initial={{ opacity: 1, height: "100%" }}
@@ -519,6 +530,8 @@ export default function GameTracker() {
                                 key={index}
                                 title={keyword.title}
                                 onClick={() => toggleExpansion(index)}
+                                activeButton={activeButton}
+                                setActiveButton={setActiveButton}
                             />
                         ))}
                     </div>
@@ -541,6 +554,8 @@ export default function GameTracker() {
                                 key={weaponIndex}
                                 title={keyword.title}
                                 onClick={() => toggleWeaponExpansion(weaponIndex)}
+                                activeButton={activeWeaponButton}
+                                setActiveButton={setActiveWeaponButton}
                             />
                         ))}
                     </div>
@@ -555,6 +570,14 @@ export default function GameTracker() {
                         ))}
                     </div>
                 </Keywords>
+                <CustomButton
+                    link="/"
+                    type="primary"
+                    fill="filled"
+                    className="home-button"
+                    text="Return"
+                    onClick={handleButtonClick}
+                />
             </PageBackground>
             <AnimatePresence>
                 {showTransition && (

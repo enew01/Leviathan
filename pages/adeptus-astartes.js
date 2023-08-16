@@ -5,7 +5,7 @@ import ArmyList from "../Components/Army Lists/spacemarinearmylist"
 import { AnimatePresence, motion } from "framer-motion";
 import Aperture from "@/Components/aperture";
 import FactionLine from "@/Components/faction_line";
-import CustomButton from "../Components/button"
+import CustomButton from "../Components/button";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import HeaderNav from "@/Components/header_nav";
@@ -175,9 +175,18 @@ position:relative;
 margin-bottom: 48px;
 `;
 
-const ListStyles = styled.section`
-}
+
+const Phases = styled.section`
+margin-top: 25px;
+display: block;
+width: 100%;
+height: auto;
+position:relative;
 `;
+
+const ListStyles = styled.section`
+`;
+
 export default function spacemarines({ armyData }) {
   const { data } = armyData;
   const [showTransition, setShowTransition] = useState(false);
