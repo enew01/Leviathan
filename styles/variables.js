@@ -19,6 +19,10 @@ export const colors = {
     tyranidGradient: "linear-gradient(0deg, rgba(64,27,70,1) 11%, rgba(0,212,255,0) 100%)",
     astartesBlue: "#062c43",
     astartesGradient: "linear-gradient(0deg, rgba(6,44,67,1) 11%, rgba(0,212,255,0) 100%)",
+    sororitasRed: "#BD0202",
+    sororitasGradient: "linear-gradient(0deg, rgba(189,2,2,1) 11%, rgba(0,212,255,0) 100%);",
+    hereticRed: "#6F0F21",
+    hereticGradient: "linear-gradient(0deg, rgba(111,15,33,1) 11%, rgba(0,212,255,0) 100%);",
     red: "#4B0B0B"
 }
 

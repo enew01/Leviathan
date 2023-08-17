@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components"
 import Title from "../Components/title"
-import ArmyList from "../Components/Army Lists/tyranidarmylist"
 import { AnimatePresence, motion } from "framer-motion";
 import Aperture from "@/Components/aperture";
 import FactionLine from "@/Components/faction_line";

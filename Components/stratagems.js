@@ -21,7 +21,7 @@ left:0;
     top: -70px;
     z-index: 9;
     overflow:hidden;
-    border-radius: 50px;
+    border-radius: 20px;
     transition: height 0.5s ease;
     left: 0;
     ::-webkit-scrollbar {
@@ -40,6 +40,16 @@ left:0;
     &.astartes-blue {
         ::-webkit-scrollbar-bar {
         background: ${colors.astartesBlue}; 
+        }
+    }
+    &.sororitas-red {
+        ::-webkit-scrollbar-bar {
+            background: ${colors.sororitasRed}; 
+        }
+    }
+    &.heretic-red {
+        ::-webkit-scrollbar-bar {
+            background: ${colors.hereticRed}; 
         }
     }
     
@@ -82,6 +92,12 @@ left:0;
     }
     &.astartes-blue {
         background-color: ${colors.astartesBlue};
+    }
+    &.sororitas-red {
+        background-color: ${colors.sororitasRed};
+    }
+    &.heretic-red {
+        background-color: ${colors.hereticRed};
     }
 }
 .open-button {
@@ -147,6 +163,12 @@ const StratagemWrapper = styled.section`
         &.astartes-blue {
             color: ${colors.astartesBlue};
         }
+        &.sororitas-red {
+            color: ${colors.sororitasRed};
+        }
+        &.heretic-red {
+            color: ${colors.hereticRed};
+        }
     }
     .strat-type {
         font-style: italic;
@@ -161,6 +183,12 @@ const StratagemWrapper = styled.section`
         }
         &.astartes-blue {
             border-color: ${colors.astartesBlue};
+        }
+        &.sororitas-red {
+            border-color: ${colors.sororitasRed};
+        }
+        &.heretic-red {
+            border-color: ${colors.hereticRed};
         }
     }
 `;

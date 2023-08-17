@@ -59,6 +59,12 @@ scroll-behavior: smooth;
     &.astartes-blue {
         background-color: ${colors.astartesBlue};
     }
+    &.sororitas-red {
+        background-color: ${colors.sororitasRed};
+    }
+    &.heretic-red {
+        background-color: ${colors.hereticRed};
+    }
 }
 .open-button {
     position: absolute;
