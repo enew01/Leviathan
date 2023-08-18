@@ -584,7 +584,7 @@ export default function heretic({ armyData }) {
                         <h2 id="character">character</h2>
                     </CardHeader>
                     <ListStyles>
-                        {data.filter(d => d.type === "character").filter(d => characterUnits.includes(d.name)).map(data => {
+                        {data.filter && data.filter(d => d.type === "character").filter(d => characterUnits.includes(d.name)).map(data => {
                             return <WarhammerCard data={data} />
 
                         })}
@@ -595,7 +595,7 @@ export default function heretic({ armyData }) {
                         <h2 id="battleline">battleline</h2>
                     </CardHeader>
                     <ListStyles>
-                        {data.filter(d => d.type === "battleline").filter(d => battlelineUnits.includes(d.name)).map(data => {
+                        {data.filter && data.filter(d => d.type === "battleline").filter(d => battlelineUnits.includes(d.name)).map(data => {
                             return <WarhammerCard data={data} />
 
                         })}
@@ -606,7 +606,9 @@ export default function heretic({ armyData }) {
                         <h2 id="other">other</h2>
                     </CardHeader>
                     <ListStyles>
-                        {data.filter(d => d.type === "other").filter(d => otherUnits.includes(d.name)).map(data => {
+
+                        {data.filter && data.filter(d => d.type === "other").filter(d => otherUnits.includes(d.name)).map(data => {
+
                             return <WarhammerCard data={data} />
 
                         })}
