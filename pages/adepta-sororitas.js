@@ -192,11 +192,9 @@ margin-bottom: 50px;
     flex-wrap: wrap;
     position: relative;
     .keyword-button {
-        .keyword-button {
-          width: 25%;
-          border-radius: 10px 10px 0 0;
-          padding: 0;
-        }
+        width: 25%;
+        border-radius: 10px 10px 0 0;
+        padding: 0;
     }
 }
 
