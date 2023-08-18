@@ -234,8 +234,8 @@ export default function sororitas({ armyData }) {
         }, 500);
     };
 
-    const characterUnits = ["Aggressor Squad"];
-    const battlelineUnits = ["Aggressor Squad"];
+    const characterUnits = ["Apothecary Primaris"];
+    const battlelineUnits = ["Assault Intercessor"];
     const otherUnits = ["Aggressor Squad"];
 
     const phaseData = [
