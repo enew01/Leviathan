@@ -194,6 +194,7 @@ margin-bottom: 50px;
     .keyword-button {
       width: 20%;
       border-radius: 10px 10px 0 0;
+      padding: 0;
     }
 }
 
