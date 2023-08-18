@@ -584,7 +584,8 @@ export default function heretic({ armyData }) {
                         <h2 id="character">character</h2>
                     </CardHeader>
                     <ListStyles>
-                        {data.filter && data.filter(d => d.type === "character").filter(d => characterUnits.includes(d.name)).map(data => {
+                        {data.filter(d => d.type === "character").filter(d => characterUnits.includes(d.name)).map(data => {
+                            console.log(data);
                             return <WarhammerCard data={data} />
 
                         })}
@@ -595,7 +596,8 @@ export default function heretic({ armyData }) {
                         <h2 id="battleline">battleline</h2>
                     </CardHeader>
                     <ListStyles>
-                        {data.filter && data.filter(d => d.type === "battleline").filter(d => battlelineUnits.includes(d.name)).map(data => {
+                        {data.filter(d => d.type === "battleline").filter(d => battlelineUnits.includes(d.name)).map(data => {
+                            console.log(data);
                             return <WarhammerCard data={data} />
 
                         })}
@@ -606,8 +608,8 @@ export default function heretic({ armyData }) {
                         <h2 id="other">other</h2>
                     </CardHeader>
                     <ListStyles>
-
-                        {data.filter && data.filter(d => d.type === "other").filter(d => otherUnits.includes(d.name)).map(data => {
+                        {data.filter(d => d.type === "other").filter(d => otherUnits.includes(d.name)).map(data => {
+                            console.log(data);
 
                             return <WarhammerCard data={data} />
 
@@ -646,7 +648,7 @@ export default function heretic({ armyData }) {
         </Main>
     );
 };
-heretic.displayName = 'Heretic Astartes';
+heretic.displayName = 'Heretics';
 
 export async function getStaticProps() {
     const res = await fetch(process.env.APP_URL + "api/army-data?name=heretic_astartes");

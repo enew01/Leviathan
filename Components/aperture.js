@@ -114,8 +114,8 @@ const Aperture = ({
     return (
         <ApertureStyles>
             <Image className="logo" src={link} alt={alt} width="300" height="300" />
-            <div class="aperture">
-                <div class="diaphragm">
+            <div className="aperture">
+                <div className="diaphragm">
                     <div></div>
                     <div></div>
                     <div></div>

@@ -448,6 +448,7 @@ export default function spacemarines({ armyData }) {
           </CardHeader>
           <ListStyles>
             {data.filter(d => d.type === "character").filter(d => characterUnits.includes(d.name)).map(data => {
+              console.log(data);
               return <WarhammerCard data={data} />
 
             })}
@@ -459,6 +460,7 @@ export default function spacemarines({ armyData }) {
           </CardHeader>
           <ListStyles>
             {data.filter(d => d.type === "battleline").filter(d => battlelineUnits.includes(d.name)).map(data => {
+              console.log(data);
               return <WarhammerCard data={data} />
 
             })}
@@ -470,6 +472,7 @@ export default function spacemarines({ armyData }) {
           </CardHeader>
           <ListStyles>
             {data.filter(d => d.type === "other").filter(d => otherUnits.includes(d.name)).map(data => {
+              console.log(data);
               return <WarhammerCard data={data} />
 
             })}

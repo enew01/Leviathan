@@ -234,9 +234,9 @@ export default function sororitas({ armyData }) {
         }, 500);
     };
 
-    const characterUnits = ["Apothecary Primaris"];
-    const battlelineUnits = ["Assault Intercessor"];
-    const otherUnits = ["Aggressor Squad"];
+    const characterUnits = ["Canoness"];
+    const battlelineUnits = ["Sisters Squad"];
+    const otherUnits = ["Zephyrim"];
 
     const phaseData = [
         {
