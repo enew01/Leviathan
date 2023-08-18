@@ -234,9 +234,9 @@ export default function heretic({ armyData }) {
         }, 500);
     };
 
-    const characterUnits = [""];
-    const battlelineUnits = [""];
-    const otherUnits = [""];
+    const characterUnits = ["Aggressor Squad"];
+    const battlelineUnits = ["Aggressor Squad"];
+    const otherUnits = ["Aggressor Squad"];
 
     const phaseData = [
         {
