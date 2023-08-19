@@ -235,9 +235,9 @@ export default function sororitas({ armyData }) {
         }, 500);
     };
 
-    const characterUnits = ["Canoness"];
-    const battlelineUnits = ["Sisters Squad"];
-    const otherUnits = ["Zephyrim"];
+    const characterUnits = ["Morvenn Vahl", "Canoness"];
+    const battlelineUnits = ["Battle Sisters Squad"];
+    const otherUnits = ["Celestian Sacresants","Retributor Squad", "Zephyrim", "Paragon Warsuits", "Sororitas Rhino"];
 
     const phaseData = [
         {
