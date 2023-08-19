@@ -238,7 +238,7 @@ export default function tyranids({ armyData }) {
   };
   const characterUnits = ["Neurotyrant"];
   const battlelineUnits = ["Termagant"];
-  const otherUnits = ["Neurogaunts", "Barbgaunts", "Zoanthropes", "Von Ryan Leapers", "Screamer Killer", "Psychophage", "Tyrannofex"];
+  const otherUnits = ["Neurogaunts", "Barbgaunts", "Zoanthropes", "VonRyan Leapers", "Screamer Killer", "Psychophage", "Tyrannofex"];
 
 
   const phaseData = [
