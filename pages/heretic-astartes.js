@@ -235,9 +235,9 @@ export default function heretic({ armyData }) {
         }, 500);
     };
 
-    const characterUnits = ["Apothecary Primaris"];
-    const battlelineUnits = ["Assault Intercessor"];
-    const otherUnits = ["Aggressor Squad"];
+    const characterUnits = ["Lucius Eternal", "Daemon Prince", "Master Possession"];
+    const battlelineUnits = ["Noise Marines"];
+    const otherUnits = ["Rhino Chaos", "Obliterators", "Possessed", "Raptors"];
 
     const phaseData = [
         {
