@@ -52,6 +52,11 @@ left:0;
             background: ${colors.hereticRed}; 
         }
     }
+    &.angels-red {
+        ::-webkit-scrollbar-bar {
+            background: ${colors.angelsRed}; 
+        }
+    }
     
     ::-webkit-scrollbar-thumb:hover {
       background: #FFF; 
@@ -98,6 +103,9 @@ left:0;
     }
     &.heretic-red {
         background-color: ${colors.hereticRed};
+    }
+    &.angels-red {
+        background-color: ${colors.angelsRed};
     }
 }
 .open-button {
@@ -169,6 +177,9 @@ const StratagemWrapper = styled.section`
         &.heretic-red {
             color: ${colors.hereticRed};
         }
+        &.angels-red {
+            color: ${colors.angelsRed};
+        }
     }
     .strat-type {
         font-style: italic;
@@ -189,6 +200,9 @@ const StratagemWrapper = styled.section`
         }
         &.heretic-red {
             border-color: ${colors.hereticRed};
+        }
+        &.angels-red {
+            border-color: ${colors.angelsRed};
         }
     }
 `;

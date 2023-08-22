@@ -23,6 +23,8 @@ export const colors = {
     sororitasGradient: "linear-gradient(0deg, rgba(189,2,2,1) 11%, rgba(0,212,255,0) 100%);",
     hereticRed: "#6F0F21",
     hereticGradient: "linear-gradient(0deg, rgba(111,15,33,1) 11%, rgba(0,212,255,0) 100%);",
+    angelsRed: "#AC1616",
+    angelsGradient: "linear-gradient(0deg, rgba(172,22,22,1) 64%, rgba(0,0,0,0) 100%);",
     red: "#4B0B0B"
 }
 

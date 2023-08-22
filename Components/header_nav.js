@@ -65,6 +65,9 @@ scroll-behavior: smooth;
     &.heretic-red {
         background-color: ${colors.hereticRed};
     }
+    &.angels-red {
+        background-color: ${colors.angelsRed};
+    }
 }
 .open-button {
     position: absolute;

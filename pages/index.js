@@ -201,6 +201,13 @@ export default function Home() {
           text="Heretic Astartes"
           onClick={handleButtonClick}
         />
+        <CustomButton
+          link="/angels-astartes/"
+          type="primary"
+          fill="filled"
+          text="Blood Angels"
+          onClick={handleButtonClick}
+        />
       </ButtonList>
       <LowerButtonList>
         <CustomButton
