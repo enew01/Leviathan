@@ -5,6 +5,19 @@ export const fonts = {
     orbitron: "'Orbitron', sans-serif;"
 };
 
+export const mediaRaw = {
+    desktop: 1440,
+    tablet: 1100,
+    mobile: 900,
+    xtramobile: 450,
+};
+export const media = {
+    desktop: "(min-width: 1101px)",
+    tablet: "(max-width: 1100px)",
+    mobile: "(max-width: 900px)",
+    xtramobile: "(max-width: 450px)",
+};
+
 export const colors = {
     buttonBG: "rgba(120, 120, 120, 1)",
     buttonHoverBG: "linear-gradient(178deg, rgba(120,120,120,1) 35%, rgba(44,44,44,1) 99%);",

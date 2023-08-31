@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from 'react';
 import styled from "styled-components"
-import { colors, fonts } from "@/styles/variables";
+import { colors, fonts, media } from "@/styles/variables";
 import Image from "next/image";
 
 
@@ -13,6 +13,10 @@ width: 1129px;
 z-index: 4;
 top: 0px;
 scroll-behavior: smooth;
+@media ${media.mobile} {
+    top: 90px;
+    width: 100%;
+}
 .wide-button {
     position: absolute;
     height: 140px;
@@ -24,6 +28,12 @@ scroll-behavior: smooth;
     border-radius: 100px;
     transition: width 0.5s ease;
     right: 0;
+    @media ${media.mobile} {
+        height: 100px;
+        width: 100px;
+        top: 0;
+        right: -50px;
+    }
     .outer-link-wrap {
         position: absolute;
         width: 1129px;
@@ -32,6 +42,10 @@ scroll-behavior: smooth;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
+        @media ${media.mobile} {
+            width: 100%;
+            padding: 0 50px;
+        }
         .link-wrap {
             width: 160px;
             text-align: center;
@@ -47,6 +61,11 @@ scroll-behavior: smooth;
                 right: 0;
                 left: 0;
                 margin: auto;
+                @media ${media.mobile} {
+                    top: 50px;
+                    padding-right: 75px;
+                    padding-left: 25px;
+                }
             }
             &:hover {
                 background-color: ${colors.darkGray};
@@ -79,6 +98,12 @@ scroll-behavior: smooth;
     z-index: 9;
     right: 0;
     cursor: pointer;
+    @media ${media.mobile} {
+        right: -50px;
+        top: 0;
+        height: 100px;
+        width: 100px;
+    }
     img {
         position: absolute;
         filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(4deg) brightness(106%) contrast(101%);
@@ -86,6 +111,9 @@ scroll-behavior: smooth;
         margin: auto;
         right: 0;
         left: 0;
+        @media ${media.mobile} {
+            top: 25px;
+        }
     }
     .fronticon-,
     .reverseicon-flipped {
@@ -100,6 +128,9 @@ scroll-behavior: smooth;
 }
 .expanded {
     width: 1129px;
+    @media ${media.mobile} {
+        width: calc(100% + 100px);
+    }
   }
   
 

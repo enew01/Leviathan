@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components"
-import { fonts, colors } from "@/styles/variables"
+import { fonts, colors, media } from "@/styles/variables"
 
 
 const TitleStyle = styled.section`
@@ -12,8 +12,17 @@ text-align: center;
 color: ${colors.white};
 z-index: 9;
 
+@media ${media.mobile} {
+    font-size: 36px;
+    line-height: 39px;
+}
+
 &.faction {
     color: ${colors.darkGray};
+    @media ${media.mobile} {
+        margin: 100px auto 54px auto;
+        width: 80%;
+    }
 }
 
 `;

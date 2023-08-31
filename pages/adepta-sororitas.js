@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import HeaderNav from "@/Components/header_nav";
 import img from '../public/astartes_background.jpg';
-import { fonts, colors } from "@/styles/variables";
+import { fonts, colors, media } from "@/styles/variables";
 import WarhammerCard from "@/Components/Cards/card_list";
 import PhaseWrap from "@/Components/Phases/phase_wrap";
 import Stratagems from "@/Components/stratagems";
@@ -27,10 +27,17 @@ height: 100vh;
 overflow: hidden;
 background-image: url(${img.src});
 background-size: cover;
+@media ${media.mobile} {
+    width: 100%;
+    padding: 0;
+}
 
 
 ::-webkit-scrollbar {
   width: 60px;
+  @media ${media.mobile} {
+      display: none;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -69,8 +76,12 @@ min-height: 100vh;
 overflow-Y: scroll;
 z-index: 3;
 scroll-behavior: smooth!important;
-.home-button {
-    margin-bottom: 75px;
+@media ${media.mobile} {
+    width: 100%;
+    padding: .5rem;
+}
+.faction-title {
+  margin-top: 100px;
 }
 `;
 
@@ -191,10 +202,15 @@ margin-bottom: 50px;
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    @media ${media.mobile} {
+        flex-direction: column;
+    }
     .keyword-button {
-        width: 25%;
-        border-radius: 10px 10px 0 0;
-        padding: 0;
+      width: 25%;
+      border-radius: 10px 10px 0 0;
+      @media ${media.mobile} {
+          width: auto;
+      }
     }
 }
 
@@ -237,7 +253,7 @@ export default function sororitas({ armyData }) {
 
     const characterUnits = ["Morvenn Vahl", "Canoness"];
     const battlelineUnits = ["Battle Sisters"];
-    const otherUnits = ["Celestian Sacresants","Retributor Squad", "Zephyrim Squad", "Paragon Warsuits", "Sororitas Rhino"];
+    const otherUnits = ["Celestian Sacresants", "Retributor Squad", "Zephyrim Squad", "Paragon Warsuits", "Sororitas Rhino"];
 
     const phaseData = [
         {

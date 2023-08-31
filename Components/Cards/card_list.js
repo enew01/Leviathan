@@ -3,6 +3,7 @@ import React from "react";
 import { Component, useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
+import { media } from "@/styles/variables";
 
 const CardWrap = styled.section`
 width: 1000px;
@@ -11,6 +12,18 @@ display: block;
 position: relative;
 margin-bottom: 48px;
 perspective: 1000px; 
+@media ${media.mobile} {
+    width: 870px;
+    height: 462px;
+    perspective: 870px; 
+    margin-bottom: 25px;
+}
+@media ${media.xtramobile} {
+    width: 400px;
+    height: 213px;
+    perspective: 400px; 
+    margin-bottom: 20px;
+}
 `;
 
 const InnerCover = styled.section`
@@ -19,6 +32,12 @@ const InnerCover = styled.section`
     position: absolute;
     top: 0;
     z-index: 3;
+    @media ${media.mobile} {
+        height: 462px;
+    }
+    @media ${media.xtramobile} {
+        height: 213px;
+    }
     .left-tap {
         position: absolute;
         width: 50%;
@@ -45,12 +64,26 @@ transform-style: preserve-3d;
 -webkit-backface-visibility: hidden;
 backface-visibility: hidden;
 transform: rotateY(180deg);
+@media ${media.mobile} {
+    width: 870px;
+    height: 462px;
+}
+@media ${media.xtramobile} {
+    width: 400px;
+    height: 213px; 
+}
 .inner-cover {
     width: 100%;
     height: 532px;
     position: absolute;
     top: 0;
     z-index: 3;
+    @media ${media.mobile} {
+        height: 462px;
+    }
+    @media ${media.xtramobile} {
+        height: 213px;
+    }
     .left-tap {
         position: absolute;
         width: 50%;
@@ -99,12 +132,26 @@ overflow: hidden;
 -webkit-backface-visibility: hidden;
 backface-visibility: hidden;
 transform: rotateY(0deg);
+@media ${media.mobile} {
+    width: 870px;
+    height: 462px;
+}
+@media ${media.xtramobile} {
+    width: 400px;
+    height: 213px;
+}
 .inner-cover {
     width: 100%;
     height: 532px;
     position: absolute;
     top: 0;
     z-index: 3;
+    @media ${media.mobile} {
+        height: 462px;
+    }
+    @media ${media.xtramobile} {
+        height: 213px;
+    }
     .left-tap {
         position: absolute;
         width: 50%;

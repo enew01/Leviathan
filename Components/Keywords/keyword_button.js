@@ -38,7 +38,6 @@ function KeywordButton({ title, onClick, activeButton, setActiveButton }) {
         } else {
             setActiveButton(title);
         }
-
         if (onClick) {
             onClick();
         }
@@ -46,9 +45,7 @@ function KeywordButton({ title, onClick, activeButton, setActiveButton }) {
 
     return (
         <KeyButton
-            className={`keyword-button ${isClicked ? 'clicked' : ''}`}
-            onClick={handleClick}
-        >
+            className={`keyword-button ${isClicked ? 'clicked' : ''}`} onClick={handleClick}>
             <div className="button-title">{title}</div>
         </KeyButton>
     );

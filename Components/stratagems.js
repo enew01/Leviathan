@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from 'react';
 import styled from "styled-components"
-import { colors, fonts } from "@/styles/variables";
+import { colors, fonts, media } from "@/styles/variables";
 import Image from "next/image";
 
 const Header = styled.section`
@@ -13,6 +13,9 @@ z-index: 4;
 top: 0px;
 scroll-behavior: smooth;
 left:0;
+@media ${media.mobile} {
+    width: 100%;
+}
 .wide-button {
     position: absolute;
     height: 140px;
@@ -24,8 +27,14 @@ left:0;
     border-radius: 20px;
     transition: height 0.5s ease;
     left: 0;
+    @media ${media.mobile} {
+        width: 100%;
+    }
     ::-webkit-scrollbar {
       width: 25px;
+      @media ${media.mobile} {
+          display: none;
+      }
     }
     
     ::-webkit-scrollbar-track {
@@ -71,6 +80,9 @@ left:0;
         flex-direction: column;
         justify-content: flex-start;
         overflow-y:scroll;
+        @media ${media.mobile} {
+            width: 100%;
+        }
         .link-wrap {
             width: 160px;
             text-align: center;
@@ -118,6 +130,9 @@ left:0;
     z-index: 9;
     left: 0;
     cursor: pointer;
+    @media ${media.mobile} {
+        width: 100%;
+    }
     img {
         position: absolute;
         filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(4deg) brightness(106%) contrast(101%);

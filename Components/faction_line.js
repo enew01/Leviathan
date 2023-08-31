@@ -2,7 +2,7 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import styled from "styled-components"
-import { fonts, colors } from "@/styles/variables"
+import { fonts, colors, media } from "@/styles/variables"
 
 
 const LineStyles = styled.section`
@@ -13,6 +13,9 @@ left: 0;
 margin: auto;
 bottom: 125px;
 text-align: center;
+@media ${media.mobile} {
+    bottom: 65px;
+}
 .faction-title {
     font-family: ${fonts.orbitron};
     position:relative;
@@ -23,6 +26,10 @@ text-align: center;
     line-height: 54px;
     text-align: center;
     color: ${colors.white};
+    @media ${media.mobile} {
+        font-size: 36px;
+        line-height: 36px;
+    }
 }
 .black-cover,
 .white-cover {

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components"
-import { fonts, colors } from "@/styles/variables"
+import { fonts, colors, media } from "@/styles/variables"
 
 const Buttons = styled.section`
   text-transform: uppercase;
@@ -17,6 +17,10 @@ const Buttons = styled.section`
   background-color: ${colors.buttonBG};
   border-radius: 3px;
   filter: ${colors.gradBottom};
+  @media ${media.mobile} {
+    width: 360px;
+    height: 90px;
+  }
 
 &:hover {
     background: ${colors.buttonHoverBG};
@@ -31,6 +35,10 @@ a {
   align-items: center;
   border: 1px solid ${colors.bordCol};
   font-family: ${fonts.goldman};
+  @media ${media.mobile} {
+    width: 350px;
+    height: 78px;
+  }
 }
 `;
 
