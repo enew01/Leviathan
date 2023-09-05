@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import Aperture from "@/Components/aperture";
 import { useRouter } from "next/router";
-import { fonts, colors } from "@/styles/variables"
+import { fonts, colors, media } from "@/styles/variables"
 import ScoreCounter from "@/Components/counter";
 import PhaseWrap from "@/Components/Phases/phase_wrap";
 import KeywordButton from "@/Components/Keywords/keyword_button";
@@ -27,6 +27,9 @@ background-size: cover;
 /* width */
 ::-webkit-scrollbar {
   width: 60px;
+  @media ${media.mobile} {
+      width: 0;
+  }
 }
 
 /* Track */
@@ -141,6 +144,10 @@ margin: 40px auto;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
+@media ${media.mobile} {
+    flex-direction: column;
+    align-items: center;
+}
 `
 
 const RoundCounter = styled.section`
@@ -193,6 +200,9 @@ min-height: 100vh;
 overflow-Y: scroll;
 z-index: 3;
 scroll-behavior: smooth!important;
+@media ${media.mobile} {
+    width: auto;
+}
 .home-button {
     margin-bottom: 75px;
 }
@@ -209,10 +219,22 @@ width: 100%;
 height: auto;
 position:relative;
 margin-bottom: 150px;
+@media ${media.mobile} {
+    margin-bottom: 325px;
+}
 .keyword-buttons {
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    @media ${media.mobile} {
+        justify-content: center;
+    }
+    .keyword-button {
+        @media ${media.mobile} {
+            font-size: 16px;
+            padding: 0 15px;
+        }
+    }
 }
 
 .keyword-definitions {
